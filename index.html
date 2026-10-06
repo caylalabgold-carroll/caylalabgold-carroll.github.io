@@ -1,14 +1,322 @@
 <!doctype html>
-<html>
-  <head>
-    <title>My Photo Portfolio</title>
-  </head>
-  <body>
-    <h1>My Photo Portfolio</h1>
-    <p>Hi, I’m [Your Name]. This is my photography portfolio.</p>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cayla Labgold-Carroll | Photography Portfolio</title>
 
-    <h2>Gallery</h2>
-    <img src="photo1.jpg" width="300">
-    <img src="photo2.jpg" width="300">
-  </body>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #111;
+      background: #f4f4f2;
+      line-height: 1.5;
+    }
+
+    header {
+      padding: 28px 6vw 40px;
+      background: #f8f8f6;
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+      margin-bottom: 42px;
+      font-size: 15px;
+    }
+
+    nav a {
+      color: #111;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 8vw, 96px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .tagline {
+      margin-top: 18px;
+      font-size: clamp(20px, 3vw, 34px);
+      font-style: italic;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .hero-grid img,
+    .gallery img,
+    .about img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      background: #ddd;
+    }
+
+    .hero-grid img {
+      height: 430px;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 44px 6vw;
+    }
+
+    section {
+      padding: 52px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(32px, 5vw, 58px);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin: 0 0 28px;
+      font-size: 19px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .gallery img {
+      height: 320px;
+    }
+
+    .gallery .wide {
+      grid-column: span 2;
+    }
+
+    .gallery .tall {
+      height: 520px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .about img {
+      height: 520px;
+    }
+
+    .about p {
+      font-size: clamp(20px, 3vw, 32px);
+      line-height: 1.18;
+      margin: 0 0 22px;
+    }
+
+    .contact a {
+      color: #111;
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 34px 6vw;
+      text-align: center;
+      font-size: 16px;
+      background: #f8f8f6;
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        justify-content: flex-start;
+      }
+
+      .hero-grid,
+      .gallery,
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid img,
+      .gallery img,
+      .gallery .tall,
+      .about img {
+        height: auto;
+        max-height: none;
+      }
+
+      .gallery .wide {
+        grid-column: span 1;
+      }
+
+      main {
+        padding: 28px 5vw;
+      }
+
+      section {
+        padding: 42px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="#politics">Politics</a>
+      <a href="#community">Community</a>
+      <a href="#portraits">Portraits</a>
+      <a href="#arts">Arts & Performance</a>
+      <a href="#events">Events</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="hero">
+      <h1>Cayla<br>Labgold-Carroll</h1>
+      <p class="tagline">Photojournalist</p>
+
+      <div class="hero-grid">
+        <img src="images/hero-1.jpg" alt="Featured photography by Cayla Labgold-Carroll">
+        <img src="images/hero-2.jpg" alt="Featured political photography by Cayla Labgold-Carroll">
+        <img src="images/hero-3.jpg" alt="Featured editorial photography by Cayla Labgold-Carroll">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="politics">
+      <h2>Politics</h2>
+      <p class="section-intro">
+        Political coverage from Washington, D.C., including congressional spaces, press events, public officials, and national news moments.
+      </p>
+
+      <div class="gallery">
+        <img class="wide" src="images/politics-1.jpg" alt="Political coverage in Washington, D.C.">
+        <img src="images/politics-2.jpg" alt="Political figure speaking at an event">
+        <img src="images/politics-3.jpg" alt="Congressional coverage">
+        <img class="wide" src="images/politics-4.jpg" alt="State of the Union coverage">
+        <img src="images/politics-5.jpg" alt="Public official in Washington, D.C.">
+      </div>
+    </section>
+
+    <section id="community">
+      <h2>Community</h2>
+      <p class="section-intro">
+        Images of public life, local stories, city scenes, and the people who shape the places around them.
+      </p>
+
+      <div class="gallery">
+        <img src="images/community-1.jpg" alt="Community photography">
+        <img class="wide" src="images/community-2.jpg" alt="Public life and community scene">
+        <img class="wide" src="images/community-3.jpg" alt="City or neighborhood scene">
+        <img src="images/community-4.jpg" alt="People in a community setting">
+      </div>
+    </section>
+
+    <section id="portraits">
+      <h2>Portraits</h2>
+      <p class="section-intro">
+        Environmental portraits, editorial portraits, and headshots.
+      </p>
+
+      <div class="gallery">
+        <img class="tall" src="images/portrait-1.jpg" alt="Editorial portrait">
+        <img src="images/portrait-2.jpg" alt="Environmental portrait">
+        <img src="images/portrait-3.jpg" alt="Portrait photography">
+        <img class="wide" src="images/portrait-4.jpg" alt="Portrait by Cayla Labgold-Carroll">
+      </div>
+    </section>
+
+    <section id="arts">
+      <h2>Arts & Performance</h2>
+      <p class="section-intro">
+        Concert, theatre, and live performance photography.
+      </p>
+
+      <div class="gallery">
+        <img class="wide" src="images/arts-1.jpg" alt="Live performance photography">
+        <img src="images/arts-2.jpg" alt="Concert photography">
+        <img src="images/arts-3.jpg" alt="Theatre photography">
+        <img class="wide" src="images/arts-4.jpg" alt="Performer on stage">
+      </div>
+    </section>
+
+    <section id="events">
+      <h2>Events</h2>
+      <p class="section-intro">
+        Coverage of gatherings, ceremonies, speeches, campus events, and public programs.
+      </p>
+
+      <div class="gallery">
+        <img src="images/events-1.jpg" alt="Event photography">
+        <img class="wide" src="images/events-2.jpg" alt="Public event coverage">
+        <img class="wide" src="images/events-3.jpg" alt="Ceremony or gathering">
+        <img src="images/events-4.jpg" alt="People attending an event">
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+        <img src="images/about.jpg" alt="Portrait of Cayla Labgold-Carroll">
+
+        <div>
+          <h2>About Me</h2>
+          <p>
+            I’m a journalism and political science student at Northwestern University’s Medill School of Journalism with a passion for telling political and community stories through images.
+          </p>
+          <p>
+            I currently work as a photojournalist in Washington, D.C. for Medill News Service.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p class="section-intro">
+        Reach out at
+        <a href="mailto:clabgoldcarroll@gmail.com">clabgoldcarroll@gmail.com</a>
+        or connect with me on
+        <a href="https://www.instagram.com/caylalcmedia/" target="_blank">Instagram</a>
+        and
+        <a href="https://www.linkedin.com/in/cayla-labgold-carroll-84a931294/" target="_blank">LinkedIn</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Cayla Labgold-Carroll</p>
+  </footer>
+</body>
 </html>
