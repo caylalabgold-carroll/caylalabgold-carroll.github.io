@@ -475,6 +475,113 @@
         columns: 1;
       }
     }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+      gap: 16px;
+    }
+
+    .hero-grid > .photo-frame:nth-child(n) {
+      grid-column: auto;
+      grid-row: auto;
+      display: block;
+      width: auto;
+      margin: 0;
+    }
+
+    .hero-grid > .photo-frame.featured {
+      grid-column: 1 / -1;
+    }
+
+    .hero-grid > .photo-frame.crop-medium,
+    #community .gallery > .photo-frame.crop-medium {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .hero-grid > .photo-frame.crop-medium img,
+    #community .gallery > .photo-frame.crop-medium img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover;
+    }
+
+    #arts .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      align-items: start;
+      columns: initial;
+    }
+
+    #arts .gallery > .photo-frame {
+      display: block;
+      width: auto;
+      margin: 0;
+      break-inside: auto;
+    }
+
+    #arts .gallery img {
+      width: 100%;
+      height: clamp(280px, 34vw, 420px) !important;
+      object-fit: contain;
+      background: #e8e8e5;
+    }
+
+    #arts .gallery > .photo-frame:last-child {
+      grid-column: 1 / -1;
+      width: min(50%, 520px);
+      justify-self: center;
+    }
+
+    nav a.about-link {
+      padding: 9px 15px;
+      color: #fff;
+      background: #222;
+      border-radius: 2px;
+      text-decoration: none;
+    }
+
+    nav a.about-link:hover {
+      background: #444;
+      text-decoration: none;
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #arts .gallery img {
+        height: clamp(240px, 48vw, 360px) !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-grid > .photo-frame.featured {
+        grid-column: 1;
+      }
+
+      #arts .gallery {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      #arts .gallery > .photo-frame:last-child {
+        grid-column: 1;
+        width: 100%;
+      }
+
+      #arts .gallery img {
+        height: auto !important;
+        max-height: 480px;
+      }
+    }
   </style>
 </head>
 
@@ -487,6 +594,7 @@
       <a href="#sports">Sports</a>
       <a href="#community">Community</a>
       <a href="#arts">Arts &amp; Performance</a>
+      <a class="about-link" href="#about">About &amp; Contact</a>
     </nav>
 
     <div class="hero">
@@ -494,13 +602,14 @@
       <p class="tagline">Photojournalist & Reporter</p>
 
       <div class="hero-grid">
-        <img class="featured" src="images/CLC.DC.SOTU3.jpg" alt="State of the Union 2026 in Washington, D.C.">
+        <img src="images/CLC.DC.SOTU3.jpg" alt="State of the Union 2026 in Washington, D.C.">
         <img src="images/CLC.Khalid 1.jpg" alt="Khalid performing live at Soldier Field">
         <img class="featured" src="images/CLC.TransMarch3.jpg" alt="Trans March family shabbat in San Francisco">
-        <img class="featured" src="images/CLC.SportsFB3.jpg" alt="Northwestern football game at Wrigley Field">
+        <img src="images/CLC.SportsFB3.jpg" alt="Northwestern football game at Wrigley Field">
         <img src="images/CLC.DCTransRally.jpg" alt="Trans rights rally at the Supreme Court">
-        <img src="images/CLC.DCKaroline2.jpg" alt="Karoline Leavitt giving the White House press briefing">
+        <img class="featured" src="images/CLC.DCKaroline2.jpg" alt="Karoline Leavitt giving the White House press briefing">
         <img src="images/CLC.DCMonksRally2.jpg" alt="Protesters rally against ICE in Washington, D.C.">
+        <img class="crop-medium" src="images/CLC.Community.jpg" alt="San Francisco families gather at synagogue block party.">
       </div>
     </div>
   </header>
@@ -536,7 +645,7 @@
       <div class="gallery">
         <img src="images/CLC.AnimalShelter.jpg" alt="The Evanston Animal Shelter hosts sibling cats." loading="lazy">
         <img src="images/CLC.CampusFall.jpg" alt="Leaves changing at Northwestern University." loading="lazy">
-        <img class="featured" src="images/CLC.Community.jpg" alt="San Francisco families gather at synagogue block party." loading="lazy">
+        <img class="crop-medium" src="images/CLC.Community.jpg" alt="San Francisco families gather at synagogue block party." loading="lazy">
         <img src="images/CLC.EvanstonMarket.jpg" alt="Dogs and their families attend the Evanston Farmers Market." loading="lazy">
         <img src="images/CLC.FacesofEvanston1.jpg" alt="Cottage Jewelry owner Ira Rose started his business in Evanston about 50 years ago." loading="lazy">
         <img src="images/CLC.FacesofEvanston2.jpg" alt="“I feel my guru has blessed my business to have 53 wonderful, successful years here,” Rose said." loading="lazy">
@@ -661,12 +770,30 @@
     document.querySelectorAll("nav a[href^=\"#\"]").forEach((link) => {
       link.addEventListener("click", (event) => {
         event.preventDefault();
+        if (link.hash === "#about") {
+          if (document.body.dataset.page !== "home") showPage("home", true);
+          history.pushState(null, "", "#about");
+          requestAnimationFrame(() => document.querySelector("#about").scrollIntoView({ behavior: "smooth" }));
+          return;
+        }
         showPage(link.hash.slice(1), true);
       });
     });
 
-    window.addEventListener("popstate", () => showPage(location.hash.slice(1)));
-    showPage(location.hash.slice(1));
+    window.addEventListener("popstate", () => {
+      const page = location.hash.slice(1);
+      if (page === "about") {
+        showPage("home");
+        requestAnimationFrame(() => document.querySelector("#about").scrollIntoView());
+      } else {
+        showPage(page);
+      }
+    });
+    const initialPage = location.hash.slice(1);
+    showPage(initialPage === "about" ? "home" : initialPage);
+    if (initialPage === "about") {
+      requestAnimationFrame(() => document.querySelector("#about").scrollIntoView());
+    }
 
     document.querySelectorAll(".hero-grid img, .gallery img").forEach((img) => {
       const caption = img.dataset.caption?.trim() || img.alt.trim() || "Photo";
