@@ -373,6 +373,48 @@
         columns: 1;
       }
     }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 6px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .gallery > .photo-frame {
+      display: block;
+      width: auto;
+      min-width: 0;
+      margin: 0;
+      break-inside: auto;
+    }
+
+    .gallery > .photo-frame.featured {
+      grid-column: span 2;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto !important;
+      object-fit: contain;
+    }
+
+    @media (max-width: 800px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery > .photo-frame.featured {
+        grid-column: span 1;
+      }
+    }
   </style>
 </head>
 
@@ -394,12 +436,12 @@
       <p class="tagline">Photojournalist & Reporter</p>
 
       <div class="hero-grid">
-        <img src="images/CLC.DC.SOTU3.jpg" alt="State of the Union 2026 in Washington, D.C.">
+        <img class="featured" src="images/CLC.DC.SOTU3.jpg" alt="State of the Union 2026 in Washington, D.C.">
         <img src="images/CLC.Khalid 1.jpg" alt="Khalid performing live at Soldier Field">
-        <img src="images/CLC.TransMarch3.jpg" alt="Trans March family shabbat in San Francisco">
-        <img src="images/CLC.SportsFB3.jpg" alt="Northwestern football game at Wrigley Field">
+        <img class="featured" src="images/CLC.TransMarch3.jpg" alt="Trans March family shabbat in San Francisco">
+        <img class="featured" src="images/CLC.SportsFB3.jpg" alt="Northwestern football game at Wrigley Field">
         <img src="images/CLC.DCTransRally.jpg" alt="Trans rights rally at the Supreme Court">
-        <img src="images/CLC.DCKaroline2.jpg" alt="Karoline Leavitt giving the White House press briefing">
+        <img class="featured" src="images/CLC.DCKaroline2.jpg" alt="Karoline Leavitt giving the White House press briefing">
         <img src="images/CLC.DCMonksRally2.jpg" alt="Protesters rally against ICE in Washington, D.C.">
       </div>
     </div>
@@ -413,15 +455,15 @@
       </p>
 
       <div class="gallery">
-        <img class="wide" src="images/CLC.DC.SOTU0.jpg" alt="Washington, d.c. state of the union 0 photo." loading="lazy">
+        <img src="images/CLC.DC.SOTU0.jpg" alt="Washington, d.c. state of the union 0 photo." loading="lazy">
         <img src="images/CLC.DC.SOTU1.jpg" alt="Washington, D.C. State of the Union 2026" loading="lazy">
         <img src="images/CLC.DC.SOTU2.jpg" alt="A moment from the 2026 State of the Union address." loading="lazy">
         <img src="images/CLC.DC.SOTU3.jpg" alt="The 2026 State of the Union address in Washington, D.C." loading="lazy">
         <img src="images/CLC.DC.SOTU4.jpg" alt="The House chamber during the 2026 State of the Union address." loading="lazy">
-        <img class="wide" src="images/CLC.DCCapitol.jpg" alt="Capitol Hill on a snowy afternoon" loading="lazy">
+        <img src="images/CLC.DCCapitol.jpg" alt="Capitol Hill on a snowy afternoon" loading="lazy">
         <img src="images/CLC.DCKaroline.jpg" alt="Karoline Leavitt speaking to reporters." loading="lazy">
         <img src="images/CLC.DCKaroline2.jpg" alt="Leavitt taking questions in the White House press room." loading="lazy">
-        <img class="wide" src="images/CLC.DCKidRock.jpg" alt="Kid Rock appeared before Congress as a celebrity voice." loading="lazy">
+        <img src="images/CLC.DCKidRock.jpg" alt="Kid Rock appeared before Congress as a celebrity voice." loading="lazy">
         <img src="images/CLC.DCKidRock2.jpg" alt="Kid Rock advocated for lowering ticket prices at hearing." loading="lazy">
         <img src="images/CLC.DCRep.jpg" alt="Sen. Ted Cruz speaks at Ticketmaster hearing." loading="lazy">
       </div>
@@ -434,13 +476,13 @@
       </p>
 
       <div class="gallery">
-        <img class="wide" src="images/CLC.AnimalShelter.jpg" alt="The Evanston Animal Shelter hosts sibling cats." loading="lazy">
+        <img src="images/CLC.AnimalShelter.jpg" alt="The Evanston Animal Shelter hosts sibling cats." loading="lazy">
         <img src="images/CLC.CampusFall.jpg" alt="Leaves changing at Northwestern University." loading="lazy">
-        <img src="images/CLC.Community.jpg" alt="San Francisco families gather at synagogue block party." loading="lazy">
+        <img class="featured" src="images/CLC.Community.jpg" alt="San Francisco families gather at synagogue block party." loading="lazy">
         <img src="images/CLC.EvanstonMarket.jpg" alt="Dogs and their families attend the Evanston Farmers Market." loading="lazy">
-        <img class="wide" src="images/CLC.FacesofEvanston1.jpg" alt="Cottage Jewelry owner Ira Rose started his business in Evanston about 50 years ago." loading="lazy">
+        <img src="images/CLC.FacesofEvanston1.jpg" alt="Cottage Jewelry owner Ira Rose started his business in Evanston about 50 years ago." loading="lazy">
         <img src="images/CLC.FacesofEvanston2.jpg" alt="“I feel my guru has blessed my business to have 53 wonderful, successful years here,” Rose said." loading="lazy">
-        <img src="images/CLC.FacesofEvanston3.jpg" alt="Reza Ekhtera, the owner of Exotic Rug on Dempster Street, is a fifth-generation rug producer and exporter." loading="lazy">
+        <img class="featured" src="images/CLC.FacesofEvanston3.jpg" alt="Reza Ekhtera, the owner of Exotic Rug on Dempster Street, is a fifth-generation rug producer and exporter." loading="lazy">
         <img src="images/CLC.FacesofEvanston4.jpg" alt="One of his favorite memories as a rug seller is fixing a rug for interim President Henry Bienen before Princess Diana visited Northwestern University in 1996." loading="lazy">
         <img src="images/CLC.FacesofEvanston5.jpg" alt="Rug was in my blood,” Ekhtera said. “I was born and raised in the rug business.” He poses with his daughter in his store." loading="lazy">
         <img src="images/CLC.FacesofEvanston7.jpg" alt="Employees at Union Pizzeria often enjoy live music on their breaks." loading="lazy">
@@ -459,7 +501,7 @@
         <img src="images/CLC.Khalid 1.jpg" alt="Khalid performed at Huntington Bank Pavilion at Northerly Island." loading="lazy">
         <img src="images/CLC.Khalid 2.jpg" alt="Khalid performs at Huntington Bank Pavilion at Northerly Island." loading="lazy">
         <img src="images/CLC.Khalid 9.jpg" alt="Khalid sings to the crowd during his performance." loading="lazy">
-        <img class="wide" src="images/CLC.Khalid 12.jpg" alt="Khalid performs under the concert lights." loading="lazy">
+        <img class="featured" src="images/CLC.Khalid 12.jpg" alt="Khalid performs under the concert lights." loading="lazy">
         <img src="images/CLC.Khalid 13.jpg" alt="Khalid performs at Huntington Bank Pavilion at Northerly Island." loading="lazy">
       </div>
     </section>
@@ -469,12 +511,12 @@
       <h2>Sports</h2>
       <p class="section-intro">College athletics, professional sports, and the energy of fans and competition.</p>
       <div class="gallery">
-        <img class="wide" src="images/CLC.SportsFB.jpg" alt="Northwestern played UMichigan at Wrigley Field." loading="lazy">
+        <img src="images/CLC.SportsFB.jpg" alt="Northwestern played UMichigan at Wrigley Field." loading="lazy">
         <img src="images/CLC.SportsFB2.jpg" alt="Northwestern fans cheered passionately." loading="lazy">
         <img src="images/CLC.SportsFB3.jpg" alt="After a close loss, the opposing teams shook hands." loading="lazy">
         <img src="images/CLC.SportsFB4.jpg" alt="Young Michigan fans cheered as players greeted them." loading="lazy">
-        <img src="images/CLC.SportsFieldHockey.jpg" alt="Northwestern Field Hockey players huddle before a game." loading="lazy">
-        <img class="wide" src="images/CLC.SportsGiantsGame.jpg" alt="Dancers performed at the Giants Jewish Heritage Night." loading="lazy">
+        <img class="featured" src="images/CLC.SportsFieldHockey.jpg" alt="Northwestern Field Hockey players huddle before a game." loading="lazy">
+        <img src="images/CLC.SportsGiantsGame.jpg" alt="Dancers performed at the Giants Jewish Heritage Night." loading="lazy">
         <img src="images/CLC.SportsGiantsGame2.jpg" alt="Young fans kicked off the game with a play ball cheer." loading="lazy">
         <img src="images/CLC.SportsTennis2.jpg" alt="Northwestern tennis player taps a ball against the court." loading="lazy">
         <img src="images/CLC.SportsTennis3.jpg" alt="Player celebrates a match win." loading="lazy">
@@ -489,22 +531,22 @@
       </p>
 
       <div class="gallery">
-        <img class="wide" src="images/CLC.DCIceRally1.jpg" alt="D.C. residents protest against ICE." loading="lazy">
+        <img src="images/CLC.DCIceRally1.jpg" alt="D.C. residents protest against ICE." loading="lazy">
         <img src="images/CLC.DCIceRally2.jpg" alt="D.C. residents protest against ICE." loading="lazy">
         <img src="images/CLC.DCIceRally3.jpg" alt="D.C. residents protest against ICE." loading="lazy">
         <img src="images/CLC.DCTransRally.jpg" alt="Pro and Anti Trans activists protest outside the Supreme Court" loading="lazy">
         <img src="images/CLC.DCTransRally2.jpg" alt="Pro and Anti Trans activists protest outside the Supreme Court" loading="lazy">
-        <img class="wide" src="images/CLC.DCTransRally3.jpg" alt="Pro and Anti Trans activists protest outside the Supreme Court." loading="lazy">
+        <img src="images/CLC.DCTransRally3.jpg" alt="Pro and Anti Trans activists protest outside the Supreme Court." loading="lazy">
         <img src="images/CLC.DCTransRally4.jpg" alt="Pro and Anti Trans activists protest outside the Supreme Court." loading="lazy">
         <img src="images/CLC.DCTransRally5.jpg" alt="Pro and Anti Trans activists protest outside the Supreme Court." loading="lazy">
         <img src="images/CLC.DCMonksRally.jpg" alt="Monks on their Walk for Peace greet D.C. residents." loading="lazy">
         <img src="images/CLC.DCMonksRally2.jpg" alt="Onlookers smiled and recieved flowers from the monks." loading="lazy">
-        <img class="wide" src="images/CLC.DCMonksRally3.jpg" alt="People from all over came to Embassy Row to greet the monks." loading="lazy">
+        <img class="featured" src="images/CLC.DCMonksRally3.jpg" alt="People from all over came to Embassy Row to greet the monks." loading="lazy">
         <img src="images/CLC.TransMarch1.jpg" alt="Families gathered for a pre-Trans March shabbat service." loading="lazy">
         <img src="images/CLC.TransMarch2.jpg" alt="Service leaders brought a rainbow challah for gatherers to share." loading="lazy">
         <img src="images/CLC.TransMarch3.jpg" alt="Families brought their children to celebrate the march." loading="lazy">
         <img src="images/CLC.TransMarch4.jpg" alt="Synagogue members stood on the side to hand water and snacks to marchers." loading="lazy">
-        <img class="wide" src="images/CLC.TransMarch5.jpg" alt="Children waved flags and ate snacks at the march." loading="lazy">
+        <img src="images/CLC.TransMarch5.jpg" alt="Children waved flags and ate snacks at the march." loading="lazy">
         <img src="images/CLC.TransMarch6.jpg" alt="Other children rode on the shoulders of their parents, holding signs." loading="lazy">
         <img src="images/CLC.Pride.jpg" alt="Jewish drag queen showed off her Star of David nails." loading="lazy">
         <img src="images/CLC.Pride2.jpg" alt="Jewish drag queen Polly Poptart rode on a float in the parade." loading="lazy">
@@ -514,7 +556,7 @@
 
     <section id="about">
       <div class="about">
-        <img src="images/003_CaylaLabgoldCarroll.jpg" alt="Portrait of Cayla Labgold-Carroll">
+        <img src="images/003_CaylaLabgoldCarroll.JPG" alt="Portrait of Cayla Labgold-Carroll">
 
         <div>
           <h2>About Me</h2>
@@ -547,6 +589,19 @@
       "sports", "events", "about", "contact"
     ]);
 
+    function layoutGalleries() {
+      document.querySelectorAll(".gallery").forEach((gallery) => {
+        const rowHeight = 6;
+        const gap = parseFloat(getComputedStyle(gallery).rowGap) || 18;
+        gallery.querySelectorAll(":scope > .photo-frame").forEach((frame) => {
+          const height = frame.getBoundingClientRect().height;
+          if (height > 0) {
+            frame.style.gridRowEnd = `span ${Math.ceil((height + gap) / (rowHeight + gap))}`;
+          }
+        });
+      });
+    }
+
     function showPage(page, updateHistory = false) {
       const selectedPage = validPages.has(page) ? page : "home";
       document.body.dataset.page = selectedPage;
@@ -557,6 +612,7 @@
       });
       if (updateHistory) history.pushState(null, "", `#${selectedPage}`);
       window.scrollTo(0, 0);
+      requestAnimationFrame(layoutGalleries);
     }
 
     document.querySelectorAll("nav a[href^=\"#\"]").forEach((link) => {
@@ -586,7 +642,11 @@
       captionElement.className = "photo-caption";
       captionElement.textContent = caption;
       frame.appendChild(captionElement);
+      if (img.closest(".gallery")) img.addEventListener("load", layoutGalleries);
     });
+
+    window.addEventListener("resize", layoutGalleries);
+    requestAnimationFrame(layoutGalleries);
   </script>
   </body>
 </html>
