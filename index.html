@@ -284,12 +284,103 @@
         padding: 42px 0;
       }
     }
+
+    /* Use natural image proportions and column flow to avoid crops and empty grid cells. */
+    .hero-grid {
+      display: block;
+      columns: 4 220px;
+      column-gap: 14px;
+      margin-top: 36px;
+    }
+
+    .hero-grid > .photo-frame,
+    .gallery > .photo-frame {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 14px;
+      break-inside: avoid;
+    }
+
+    .hero-grid img,
+    .gallery img,
+    .about img {
+      width: 100%;
+      height: auto !important;
+      min-height: 0;
+      max-height: none;
+      object-fit: contain;
+    }
+
+    .gallery {
+      display: block;
+      columns: 3 250px;
+      column-gap: 18px;
+    }
+
+    .gallery > .photo-frame.wide {
+      grid-column: auto;
+    }
+
+    .about {
+      align-items: start;
+    }
+
+    body[data-page="home"] main {
+      display: none;
+    }
+
+    body:not([data-page="home"]) .hero {
+      display: none;
+    }
+
+    main section {
+      display: none;
+      min-height: 65vh;
+    }
+
+    body[data-page="politics"] #politics,
+    body[data-page="community"] #community,
+    body[data-page="portraits"] #portraits,
+    body[data-page="arts"] #arts,
+    body[data-page="sports"] #sports,
+    body[data-page="events"] #events,
+    body[data-page="about"] #about,
+    body[data-page="contact"] #contact {
+      display: block;
+    }
+
+    body:not([data-page="home"]) footer {
+      display: none;
+    }
+
+    nav a[aria-current="page"] {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid {
+        columns: 2 150px;
+      }
+
+      .gallery {
+        columns: 2 150px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-grid,
+      .gallery {
+        columns: 1;
+      }
+    }
   </style>
 </head>
 
 <body>
   <header>
-    <nav>
+    <nav aria-label="Portfolio sections">
+      <a href="#home" aria-current="page">Home</a>
       <a href="#politics">Politics</a>
       <a href="#community">Community</a>
       <a href="#portraits">Portraits</a>
@@ -326,9 +417,9 @@
       <div class="gallery">
         <img class="wide" src="images/CLC.DC.SOTU0.jpg" alt="Washington, d.c. state of the union 0 photo." loading="lazy">
         <img src="images/CLC.DC.SOTU1.jpg" alt="Washington, D.C. State of the Union 2026" loading="lazy">
-        <img src="images/CLC.DC.SOTU2.jpg" 
-        <img src="images/CLC.DC.SOTU3.jpg" 
-        <img src="images/CLC.DC.SOTU4.jpg" 
+        <img src="images/CLC.DC.SOTU2.jpg" alt="A moment from the 2026 State of the Union address." loading="lazy">
+        <img src="images/CLC.DC.SOTU3.jpg" alt="The 2026 State of the Union address in Washington, D.C." loading="lazy">
+        <img src="images/CLC.DC.SOTU4.jpg" alt="The House chamber during the 2026 State of the Union address." loading="lazy">
         <img class="wide" src="images/CLC.DCCapitol.jpg" alt="Capitol Hill on a snowy afternoon" loading="lazy">
         <img src="images/CLC.DCKaroline.jpg" alt="Karoline Leavitt speaking to reporters." loading="lazy">
         <img src="images/CLC.DCKaroline2.jpg" alt="Leavitt taking questions in the White House press room." loading="lazy">
@@ -349,6 +440,13 @@
         <img src="images/CLC.CampusFall.jpg" alt="Leaves changing at Northwestern University." loading="lazy">
         <img src="images/CLC.Community.jpg" alt="San Francisco families gather at synagogue block party." loading="lazy">
         <img src="images/CLC.EvanstonMarket.jpg" alt="Dogs and their families attend the Evanston Farmers Market." loading="lazy">
+      </div>
+    </section>
+
+    <section id="portraits">
+      <h2>Portraits</h2>
+      <p class="section-intro">Portraits and conversations with the people behind local businesses and community life.</p>
+      <div class="gallery">
         <img class="wide" src="images/CLC.FacesofEvanston1.jpg" alt="Cottage Jewelry owner Ira Rose started his business in Evanston about 50 years ago." loading="lazy">
         <img src="images/CLC.FacesofEvanston2.jpg" alt="“I feel my guru has blessed my business to have 53 wonderful, successful years here,” Rose said." loading="lazy">
         <img src="images/CLC.FacesofEvanston3.jpg" alt="Reza Ekhtera, the owner of Exotic Rug on Dempster Street, is a fifth-generation rug producer and exporter." loading="lazy">
@@ -368,10 +466,10 @@
 
       <div class="gallery">
         <img src="images/CLC.Khalid 1.jpg" alt="Khalid performed at Huntington Bank Pavilion at Northerly Island." loading="lazy">
-        <img src="images/CLC.Khalid 2.jpg" 
-        <img src="images/CLC.Khalid 9.jpg" 
-        <img class="wide" src="images/CLC.Khalid 12.jpg" 
-        <img src="images/CLC.Khalid 13.jpg" alt="Khalid  13 photo."
+        <img src="images/CLC.Khalid 2.jpg" alt="Khalid performs at Huntington Bank Pavilion at Northerly Island." loading="lazy">
+        <img src="images/CLC.Khalid 9.jpg" alt="Khalid sings to the crowd during his performance." loading="lazy">
+        <img class="wide" src="images/CLC.Khalid 12.jpg" alt="Khalid performs under the concert lights." loading="lazy">
+        <img src="images/CLC.Khalid 13.jpg" alt="Khalid performs at Huntington Bank Pavilion at Northerly Island." loading="lazy">
       </div>
     </section>
 
@@ -453,7 +551,34 @@
     <p>© 2026 Cayla Labgold-Carroll</p>
   </footer>
   <script>
-    document.querySelectorAll(".gallery img").forEach((img) => {
+    const validPages = new Set([
+      "home", "politics", "community", "portraits", "arts",
+      "sports", "events", "about", "contact"
+    ]);
+
+    function showPage(page, updateHistory = false) {
+      const selectedPage = validPages.has(page) ? page : "home";
+      document.body.dataset.page = selectedPage;
+      document.querySelectorAll("nav a").forEach((link) => {
+        const isCurrent = link.getAttribute("href") === `#${selectedPage}`;
+        if (isCurrent) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+      if (updateHistory) history.pushState(null, "", `#${selectedPage}`);
+      window.scrollTo(0, 0);
+    }
+
+    document.querySelectorAll("nav a[href^=\"#\"]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        showPage(link.hash.slice(1), true);
+      });
+    });
+
+    window.addEventListener("popstate", () => showPage(location.hash.slice(1)));
+    showPage(location.hash.slice(1));
+
+    document.querySelectorAll(".hero-grid img, .gallery img").forEach((img) => {
       const caption = img.dataset.caption?.trim() || img.alt.trim() || "Photo";
       const frame = document.createElement("figure");
       frame.className = "photo-frame";
@@ -462,9 +587,9 @@
 
       img.parentNode.insertBefore(frame, img);
       frame.appendChild(img);
-      const existingClasses = img.className;
+      const classes = img.className.trim();
       img.className = "";
-      if (existingClasses) frame.classList.add(...existingClasses.split(/\s+/));
+      if (classes) frame.classList.add(...classes.split(/\s+/));
 
       const captionElement = document.createElement("figcaption");
       captionElement.className = "photo-caption";
