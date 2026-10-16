@@ -453,49 +453,23 @@
     <p>© 2026 Cayla Labgold-Carroll</p>
   </footer>
   <script>
-    const captionLabels = {
-      AnimalShelter: "At the animal shelter",
-      CampusFall: "Autumn on campus",
-      Community: "Community life",
-      "DC.SOTU": "State of the Union, Washington, D.C.",
-      DCCapitol: "The U.S. Capitol, Washington, D.C.",
-      DCIceRally: "ICE rally, Washington, D.C.",
-      DCKaroline: "Karoline in Washington, D.C.",
-      DCKidRock: "Kid Rock performs",
-      DCMonksRally: "Monks rally, Washington, D.C.",
-      DCRep: "A representative on Capitol Hill",
-      DCTransRally: "Trans rights rally, Washington, D.C.",
-      Evanston: "Evanston",
-      EvanstonMarket: "Evanston market",
-      FacesofEvanston: "Faces of Evanston",
-      Khalid: "Khalid performs",
-      Pride: "Pride celebration",
-      SportsFB: "Northwestern football",
-      SportsFieldHockey: "Northwestern field hockey",
-      SportsGiantsGame: "Giants game",
-      SportsTennis: "Northwestern tennis",
-      SportsTennisjpg: "Northwestern tennis",
-      TransMarch: "Trans March"
-    };
-
-    document.querySelectorAll('img[src^="images/"]').forEach((img) => {
-      const filename = decodeURIComponent(img.getAttribute("src").split("/").pop())
-        .replace(/^CLC\\./, "")
-        .replace(/\\.jpg$/i, "");
-      const number = filename.match(/(\\d+)$/)?.[1];
-      const key = filename.replace(/\\d+$/, "").trim();
-      const caption = captionLabels[key] || key.replace(/([a-z])([A-Z])/g, "$1 $2");
-      const label = number ? `${caption} · Photo ${number}` : caption;
+    document.querySelectorAll(".gallery img").forEach((img) => {
+      const caption = img.dataset.caption?.trim() || img.alt.trim() || "Photo";
       const frame = document.createElement("figure");
       frame.className = "photo-frame";
-      img.classList.forEach((className) => frame.classList.add(className));
       frame.tabIndex = 0;
-      frame.setAttribute("aria-label", label);
-      const figcaption = document.createElement("figcaption");
-      figcaption.className = "photo-caption";
-      figcaption.textContent = label;
+      frame.setAttribute("aria-label", caption);
+
       img.parentNode.insertBefore(frame, img);
-      frame.append(img, figcaption);
+      frame.appendChild(img);
+      const existingClasses = img.className;
+      img.className = "";
+      if (existingClasses) frame.classList.add(...existingClasses.split(/\s+/));
+
+      const captionElement = document.createElement("figcaption");
+      captionElement.className = "photo-caption";
+      captionElement.textContent = caption;
+      frame.appendChild(captionElement);
     });
   </script>
   </body>
