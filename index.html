@@ -23,6 +23,7 @@
     }
 
     header {
+      position: relative;
       padding: 28px 6vw 40px;
       background: #f8f8f6;
       border-bottom: 1px solid #ddd;
@@ -33,7 +34,7 @@
       flex-wrap: wrap;
       gap: 18px;
       justify-content: center;
-      margin-bottom: 42px;
+      margin-bottom: 24px;
       font-size: 15px;
     }
 
@@ -53,15 +54,18 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(42px, 8vw, 96px);
-      line-height: 0.95;
-      text-transform: uppercase;
+      font-size: clamp(16px, 1.8vw, 22px);
+      line-height: 1.2;
+      font-weight: 400;
       letter-spacing: 0;
+      text-transform: none;
+      white-space: nowrap;
     }
 
     .tagline {
-      margin-top: 18px;
-      font-size: clamp(20px, 3vw, 34px);
+      display: inline;
+      margin: 0 0 0 10px;
+      font-size: inherit;
       font-style: italic;
     }
 
@@ -238,6 +242,12 @@
     @media (max-width: 800px) {
       nav {
         justify-content: flex-start;
+        padding-right: 140px;
+      }
+
+      nav a.about-link {
+        top: 20px;
+        right: 5vw;
       }
 
       .gallery,
@@ -511,9 +521,20 @@
     #arts .gallery {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+      grid-auto-flow: row;
       gap: 22px;
       align-items: start;
       columns: initial;
+    }
+
+    #arts .gallery > .photo-frame {
+      grid-row: auto !important;
+      grid-column: auto;
+    }
+
+    #arts .gallery > .photo-frame.featured {
+      grid-column: auto;
     }
 
     #arts .gallery > .photo-frame {
@@ -537,6 +558,9 @@
     }
 
     nav a.about-link {
+      position: absolute;
+      top: 20px;
+      right: 6vw;
       padding: 9px 15px;
       color: #fff;
       background: #222;
@@ -598,8 +622,7 @@
     </nav>
 
     <div class="hero">
-      <h1>Cayla<br>Labgold-Carroll</h1>
-      <p class="tagline">Photojournalist & Reporter</p>
+      <h1>Cayla Labgold-Carroll <span class="tagline">— Photojournalist &amp; Reporter</span></h1>
 
       <div class="hero-grid">
         <img src="images/CLC.DC.SOTU3.jpg" alt="State of the Union 2026 in Washington, D.C.">
@@ -668,7 +691,7 @@
         <img src="images/CLC.Khalid 1.jpg" alt="Khalid performed at Huntington Bank Pavilion at Northerly Island." loading="lazy">
         <img src="images/CLC.Khalid 2.jpg" alt="Khalid performs at Huntington Bank Pavilion at Northerly Island." loading="lazy">
         <img src="images/CLC.Khalid 9.jpg" alt="Khalid sings to the crowd during his performance." loading="lazy">
-        <img class="featured" src="images/CLC.Khalid 12.jpg" alt="Khalid performs under the concert lights." loading="lazy">
+        <img src="images/CLC.Khalid 12.jpg" alt="Khalid performs under the concert lights." loading="lazy">
         <img src="images/CLC.Khalid 13.jpg" alt="Khalid performs at Huntington Bank Pavilion at Northerly Island." loading="lazy">
       </div>
     </section>
