@@ -326,7 +326,7 @@
     }
 
     body[data-page="home"] main {
-      display: none;
+      display: block;
     }
 
     body:not([data-page="home"]) .hero {
@@ -339,13 +339,17 @@
     }
 
     body[data-page="politics"] #politics,
-    body[data-page="community"] #community,
-    body[data-page="arts"] #arts,
-    body[data-page="sports"] #sports,
     body[data-page="events"] #events,
-    body[data-page="about"] #about,
-    body[data-page="contact"] #contact {
+    body[data-page="sports"] #sports,
+    body[data-page="community"] #community,
+    body[data-page="arts"] #arts {
       display: block;
+    }
+
+    body[data-page="home"] #about,
+    body[data-page="home"] #contact {
+      display: block;
+      min-height: auto;
     }
 
     body:not([data-page="home"]) footer {
@@ -415,6 +419,62 @@
         grid-column: span 1;
       }
     }
+
+    /* Column flow keeps mixed image proportions close together with no empty grid cells. */
+    .hero-grid {
+      display: block;
+      columns: 4 210px;
+      column-gap: 14px;
+    }
+
+    .gallery {
+      display: block;
+      columns: 3 250px;
+      column-gap: 18px;
+    }
+
+    .hero-grid > .photo-frame,
+    .gallery > .photo-frame {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 14px;
+      break-inside: avoid;
+    }
+
+    .hero-grid > .photo-frame.featured,
+    .gallery > .photo-frame.featured {
+      display: block;
+      width: 100%;
+      column-span: all;
+    }
+
+    .hero-grid img,
+    .gallery img,
+    .about img {
+      display: block;
+      width: 100%;
+      height: auto !important;
+      min-height: 0;
+      max-height: none;
+      object-fit: contain;
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid {
+        columns: 2 160px;
+      }
+
+      .gallery {
+        columns: 2 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-grid,
+      .gallery {
+        columns: 1;
+      }
+    }
   </style>
 </head>
 
@@ -423,12 +483,10 @@
     <nav aria-label="Portfolio sections">
       <a href="#home" aria-current="page">Home</a>
       <a href="#politics">Politics</a>
-      <a href="#community">Community</a>
-      <a href="#arts">Arts & Performance</a>
+      <a href="#events">Protests &amp; Marches</a>
       <a href="#sports">Sports</a>
-      <a href="#events">Protests & Marches</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#community">Community</a>
+      <a href="#arts">Arts &amp; Performance</a>
     </nav>
 
     <div class="hero">
@@ -441,7 +499,7 @@
         <img class="featured" src="images/CLC.TransMarch3.jpg" alt="Trans March family shabbat in San Francisco">
         <img class="featured" src="images/CLC.SportsFB3.jpg" alt="Northwestern football game at Wrigley Field">
         <img src="images/CLC.DCTransRally.jpg" alt="Trans rights rally at the Supreme Court">
-        <img class="featured" src="images/CLC.DCKaroline2.jpg" alt="Karoline Leavitt giving the White House press briefing">
+        <img src="images/CLC.DCKaroline2.jpg" alt="Karoline Leavitt giving the White House press briefing">
         <img src="images/CLC.DCMonksRally2.jpg" alt="Protesters rally against ICE in Washington, D.C.">
       </div>
     </div>
@@ -482,7 +540,7 @@
         <img src="images/CLC.EvanstonMarket.jpg" alt="Dogs and their families attend the Evanston Farmers Market." loading="lazy">
         <img src="images/CLC.FacesofEvanston1.jpg" alt="Cottage Jewelry owner Ira Rose started his business in Evanston about 50 years ago." loading="lazy">
         <img src="images/CLC.FacesofEvanston2.jpg" alt="“I feel my guru has blessed my business to have 53 wonderful, successful years here,” Rose said." loading="lazy">
-        <img class="featured" src="images/CLC.FacesofEvanston3.jpg" alt="Reza Ekhtera, the owner of Exotic Rug on Dempster Street, is a fifth-generation rug producer and exporter." loading="lazy">
+        <img src="images/CLC.FacesofEvanston3.jpg" alt="Reza Ekhtera, the owner of Exotic Rug on Dempster Street, is a fifth-generation rug producer and exporter." loading="lazy">
         <img src="images/CLC.FacesofEvanston4.jpg" alt="One of his favorite memories as a rug seller is fixing a rug for interim President Henry Bienen before Princess Diana visited Northwestern University in 1996." loading="lazy">
         <img src="images/CLC.FacesofEvanston5.jpg" alt="Rug was in my blood,” Ekhtera said. “I was born and raised in the rug business.” He poses with his daughter in his store." loading="lazy">
         <img src="images/CLC.FacesofEvanston7.jpg" alt="Employees at Union Pizzeria often enjoy live music on their breaks." loading="lazy">
@@ -515,7 +573,7 @@
         <img src="images/CLC.SportsFB2.jpg" alt="Northwestern fans cheered passionately." loading="lazy">
         <img src="images/CLC.SportsFB3.jpg" alt="After a close loss, the opposing teams shook hands." loading="lazy">
         <img src="images/CLC.SportsFB4.jpg" alt="Young Michigan fans cheered as players greeted them." loading="lazy">
-        <img class="featured" src="images/CLC.SportsFieldHockey.jpg" alt="Northwestern Field Hockey players huddle before a game." loading="lazy">
+        <img src="images/CLC.SportsFieldHockey.jpg" alt="Northwestern Field Hockey players huddle before a game." loading="lazy">
         <img src="images/CLC.SportsGiantsGame.jpg" alt="Dancers performed at the Giants Jewish Heritage Night." loading="lazy">
         <img src="images/CLC.SportsGiantsGame2.jpg" alt="Young fans kicked off the game with a play ball cheer." loading="lazy">
         <img src="images/CLC.SportsTennis2.jpg" alt="Northwestern tennis player taps a ball against the court." loading="lazy">
@@ -541,7 +599,7 @@
         <img src="images/CLC.DCTransRally5.jpg" alt="Pro and Anti Trans activists protest outside the Supreme Court." loading="lazy">
         <img src="images/CLC.DCMonksRally.jpg" alt="Monks on their Walk for Peace greet D.C. residents." loading="lazy">
         <img src="images/CLC.DCMonksRally2.jpg" alt="Onlookers smiled and recieved flowers from the monks." loading="lazy">
-        <img class="featured" src="images/CLC.DCMonksRally3.jpg" alt="People from all over came to Embassy Row to greet the monks." loading="lazy">
+        <img src="images/CLC.DCMonksRally3.jpg" alt="People from all over came to Embassy Row to greet the monks." loading="lazy">
         <img src="images/CLC.TransMarch1.jpg" alt="Families gathered for a pre-Trans March shabbat service." loading="lazy">
         <img src="images/CLC.TransMarch2.jpg" alt="Service leaders brought a rainbow challah for gatherers to share." loading="lazy">
         <img src="images/CLC.TransMarch3.jpg" alt="Families brought their children to celebrate the march." loading="lazy">
@@ -585,22 +643,8 @@
   </footer>
   <script>
     const validPages = new Set([
-      "home", "politics", "community", "arts",
-      "sports", "events", "about", "contact"
+      "home", "politics", "events", "sports", "community", "arts"
     ]);
-
-    function layoutGalleries() {
-      document.querySelectorAll(".gallery").forEach((gallery) => {
-        const rowHeight = 6;
-        const gap = parseFloat(getComputedStyle(gallery).rowGap) || 18;
-        gallery.querySelectorAll(":scope > .photo-frame").forEach((frame) => {
-          const height = frame.getBoundingClientRect().height;
-          if (height > 0) {
-            frame.style.gridRowEnd = `span ${Math.ceil((height + gap) / (rowHeight + gap))}`;
-          }
-        });
-      });
-    }
 
     function showPage(page, updateHistory = false) {
       const selectedPage = validPages.has(page) ? page : "home";
@@ -612,7 +656,6 @@
       });
       if (updateHistory) history.pushState(null, "", `#${selectedPage}`);
       window.scrollTo(0, 0);
-      requestAnimationFrame(layoutGalleries);
     }
 
     document.querySelectorAll("nav a[href^=\"#\"]").forEach((link) => {
@@ -642,11 +685,8 @@
       captionElement.className = "photo-caption";
       captionElement.textContent = caption;
       frame.appendChild(captionElement);
-      if (img.closest(".gallery")) img.addEventListener("load", layoutGalleries);
     });
 
-    window.addEventListener("resize", layoutGalleries);
-    requestAnimationFrame(layoutGalleries);
   </script>
   </body>
 </html>
