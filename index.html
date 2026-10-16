@@ -495,12 +495,14 @@
       grid-column: 1 / -1;
     }
 
-    .hero-grid > .photo-frame.crop-medium {
+    .hero-grid > .photo-frame.crop-medium,
+    #community .gallery > .photo-frame.crop-medium {
       aspect-ratio: 4 / 3;
       overflow: hidden;
     }
 
-    .hero-grid > .photo-frame.crop-medium img {
+    .hero-grid > .photo-frame.crop-medium img,
+    #community .gallery > .photo-frame.crop-medium img {
       width: 100%;
       height: 100% !important;
       object-fit: cover;
