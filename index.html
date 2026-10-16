@@ -88,39 +88,80 @@
       border-radius: 3px;
     }
 
-    .hero-grid img:nth-child(1) {
+    .hero-grid > .photo-frame:nth-child(1) {
       grid-column: 1 / 5;
       grid-row: 1 / 5;
     }
 
-    .hero-grid img:nth-child(2) {
+    .hero-grid > .photo-frame:nth-child(2) {
       grid-column: 5 / 9;
       grid-row: 1 / 4;
     }
 
-    .hero-grid img:nth-child(3) {
+    .hero-grid > .photo-frame:nth-child(3) {
       grid-column: 9 / 13;
       grid-row: 1 / 4;
     }
 
-    .hero-grid img:nth-child(4) {
+    .hero-grid > .photo-frame:nth-child(4) {
       grid-column: 5 / 8;
       grid-row: 4 / 7;
     }
 
-    .hero-grid img:nth-child(5) {
+    .hero-grid > .photo-frame:nth-child(5) {
       grid-column: 8 / 11;
       grid-row: 4 / 7;
     }
 
-    .hero-grid img:nth-child(6) {
+    .hero-grid > .photo-frame:nth-child(6) {
       grid-column: 11 / 13;
       grid-row: 4 / 7;
     }
 
-    .hero-grid img:nth-child(7) {
+    .hero-grid > .photo-frame:nth-child(7) {
       grid-column: 1 / 5;
       grid-row: 5 / 7;
+    }
+
+    .photo-frame {
+      position: relative;
+      display: block;
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .photo-caption {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 34px 14px 12px;
+      color: #fff;
+      font: 15px/1.35 Georgia, "Times New Roman", serif;
+      background: linear-gradient(transparent, rgb(0 0 0 / 78%));
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 180ms ease, transform 180ms ease;
+      pointer-events: none;
+    }
+
+    .photo-frame:hover .photo-caption,
+    .photo-frame:focus .photo-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .photo-frame:focus-visible {
+      outline: 3px solid #6b4eff;
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .photo-caption {
+        transition: none;
+      }
     }
 
     main {
@@ -157,11 +198,11 @@
       height: 320px;
     }
 
-    .gallery .wide {
+    .gallery > .photo-frame.wide {
       grid-column: span 2;
     }
 
-    .gallery .tall {
+    .gallery > .photo-frame.tall img {
       height: 520px;
     }
 
@@ -205,13 +246,13 @@
       }
 
       .gallery img,
-      .gallery .tall,
+      .gallery > .photo-frame.tall img,
       .about img {
         height: auto;
         max-height: none;
       }
 
-      .gallery .wide {
+      .gallery > .photo-frame.wide {
         grid-column: span 1;
       }
 
@@ -220,17 +261,17 @@
         grid-auto-rows: 120px;
       }
 
-      .hero-grid img:nth-child(1),
-      .hero-grid img:nth-child(4),
-      .hero-grid img:nth-child(7) {
+      .hero-grid > .photo-frame:nth-child(1),
+      .hero-grid > .photo-frame:nth-child(4),
+      .hero-grid > .photo-frame:nth-child(7) {
         grid-column: span 2;
         grid-row: span 2;
       }
 
-      .hero-grid img:nth-child(2),
-      .hero-grid img:nth-child(3),
-      .hero-grid img:nth-child(5),
-      .hero-grid img:nth-child(6) {
+      .hero-grid > .photo-frame:nth-child(2),
+      .hero-grid > .photo-frame:nth-child(3),
+      .hero-grid > .photo-frame:nth-child(5),
+      .hero-grid > .photo-frame:nth-child(6) {
         grid-column: span 1;
         grid-row: span 2;
       }
@@ -426,5 +467,51 @@
   <footer>
     <p>© 2026 Cayla Labgold-Carroll</p>
   </footer>
-</body>
+  <script>
+    const captionLabels = {
+      AnimalShelter: "At the animal shelter",
+      CampusFall: "Autumn on campus",
+      Community: "Community life",
+      "DC.SOTU": "State of the Union, Washington, D.C.",
+      DCCapitol: "The U.S. Capitol, Washington, D.C.",
+      DCIceRally: "ICE rally, Washington, D.C.",
+      DCKaroline: "Karoline in Washington, D.C.",
+      DCKidRock: "Kid Rock performs",
+      DCMonksRally: "Monks rally, Washington, D.C.",
+      DCRep: "A representative on Capitol Hill",
+      DCTransRally: "Trans rights rally, Washington, D.C.",
+      Evanston: "Evanston",
+      EvanstonMarket: "Evanston market",
+      FacesofEvanston: "Faces of Evanston",
+      Khalid: "Khalid performs",
+      Pride: "Pride celebration",
+      SportsFB: "Northwestern football",
+      SportsFieldHockey: "Northwestern field hockey",
+      SportsGiantsGame: "Giants game",
+      SportsTennis: "Northwestern tennis",
+      SportsTennisjpg: "Northwestern tennis",
+      TransMarch: "Trans March"
+    };
+
+    document.querySelectorAll('img[src^="images/"]').forEach((img) => {
+      const filename = decodeURIComponent(img.getAttribute("src").split("/").pop())
+        .replace(/^CLC\\./, "")
+        .replace(/\\.jpg$/i, "");
+      const number = filename.match(/(\\d+)$/)?.[1];
+      const key = filename.replace(/\\d+$/, "").trim();
+      const caption = captionLabels[key] || key.replace(/([a-z])([A-Z])/g, "$1 $2");
+      const label = number ? `${caption} · Photo ${number}` : caption;
+      const frame = document.createElement("figure");
+      frame.className = "photo-frame";
+      img.classList.forEach((className) => frame.classList.add(className));
+      frame.tabIndex = 0;
+      frame.setAttribute("aria-label", label);
+      const figcaption = document.createElement("figcaption");
+      figcaption.className = "photo-caption";
+      figcaption.textContent = label;
+      img.parentNode.insertBefore(frame, img);
+      frame.append(img, figcaption);
+    });
+  </script>
+  </body>
 </html>
