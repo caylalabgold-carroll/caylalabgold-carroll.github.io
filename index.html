@@ -584,7 +584,7 @@
       }
     }
 
-    #published .story-list {
+    #published .published-intro {\n      max-width: none;\n      white-space: nowrap;\n      font-size: clamp(14px, 1.5vw, 18px);\n    }\n\n    @media (max-width: 480px) {\n      #published .published-intro {\n        font-size: clamp(10px, 3vw, 14px);\n      }\n    }\n\n    #published .story-list {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
@@ -598,7 +598,7 @@
       padding: 0;
       overflow: hidden;
       color: #f8f8f6;
-      background: #20262d;
+      background: #4E2A84;
       border-radius: 3px;
       text-decoration: none;
       transition: background 180ms ease, transform 180ms ease;
@@ -607,7 +607,7 @@
     #published .story-card:first-child {
       grid-column: 1 / -1;
       min-height: 560px;
-      background: #263d50;
+      background: #4E2A84;
     }
 
     #published .story-cover {
@@ -624,7 +624,7 @@
 
     #published .story-card:hover,
     #published .story-card:focus-visible {
-      background: #384d5f;
+      background: #3B1F65;
       transform: translateY(-3px);
       text-decoration: none;
     }
@@ -838,7 +838,7 @@
 
     <section id="published">
       <h2>Published Photo Stories</h2>
-      <p class="section-intro">Photo essays and visual stories published by Medill on the Hill and The Daily Northwestern.</p>
+      <p class="section-intro published-intro">Published photo essays and visual stories by Cayla Labgold-Carroll</p>
 
       <div class="story-list">
         <a class="story-card" href="https://medillonthehill.medill.northwestern.edu/2026/02/in-photos-trump-delivers-longest-state-of-the-union-address-in-history/" target="_blank" rel="noopener noreferrer">
