@@ -352,7 +352,8 @@
     body[data-page="events"] #events,
     body[data-page="sports"] #sports,
     body[data-page="community"] #community,
-    body[data-page="arts"] #arts {
+    body[data-page="arts"] #arts,
+    body[data-page="published"] #published {
       display: block;
     }
 
@@ -583,6 +584,81 @@
       }
     }
 
+    #published .story-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    #published .story-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      padding: clamp(22px, 3vw, 34px);
+      color: #f8f8f6;
+      background: #20262d;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    #published .story-card:first-child {
+      grid-column: 1 / -1;
+      min-height: 280px;
+      background: #263d50;
+    }
+
+    #published .story-card:hover,
+    #published .story-card:focus-visible {
+      background: #384d5f;
+      transform: translateY(-3px);
+      text-decoration: none;
+    }
+
+    #published .story-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: #d2d9de;
+      font: 12px/1.4 Arial, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #published .story-card h3 {
+      max-width: 850px;
+      margin: 30px 0 20px;
+      font-size: clamp(23px, 3.2vw, 38px);
+      line-height: 1.12;
+      font-weight: 400;
+    }
+
+    #published .story-card:first-child h3 {
+      font-size: clamp(32px, 5vw, 58px);
+    }
+
+    #published .story-open {
+      align-self: flex-end;
+      font: 14px/1.4 Arial, sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 700px) {
+      #published .story-list {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      #published .story-card:first-child {
+        grid-column: auto;
+      }
+
+      #published .story-meta {
+        flex-wrap: wrap;
+      }
+    }
+
     @media (max-width: 480px) {
       .hero-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -618,6 +694,7 @@
       <a href="#sports">Sports</a>
       <a href="#community">Community</a>
       <a href="#arts">Arts &amp; Performance</a>
+      <a href="#published">Published Photo Stories</a>
       <a class="about-link" href="#about">About &amp; Contact</a>
     </nav>
 
@@ -744,6 +821,60 @@
       </div>
     </section>
 
+
+    <section id="published">
+      <h2>Published Photo Stories</h2>
+      <p class="section-intro">Photo essays and visual stories published by Medill on the Hill and The Daily Northwestern.</p>
+
+      <div class="story-list">
+        <a class="story-card" href="https://dailynorthwestern.com/2026/05/24/lateststories/captured-northwestern-lacrosse-defeats-johns-hopkins-in-semifinal/" target="_blank" rel="noopener noreferrer">
+          <div class="story-meta"><span>The Daily Northwestern</span><time datetime="2026-05-24">May 24, 2026</time></div>
+          <h3>Captured: Northwestern Lacrosse defeats Johns Hopkins in semifinal</h3>
+          <span class="story-open">View photo story ↗</span>
+        </a>
+        <a class="story-card" href="https://dailynorthwestern.com/2026/04/06/photo/captured-nudm-parties-on-despite-lightning-storm/" target="_blank" rel="noopener noreferrer">
+          <div class="story-meta"><span>The Daily Northwestern</span><time datetime="2026-04-06">April 6, 2026</time></div>
+          <h3>Captured: NUDM parties on despite lightning storm</h3>
+          <span class="story-open">View photo story ↗</span>
+        </a>
+        <a class="story-card" href="https://medillonthehill.medill.northwestern.edu/2026/02/in-photos-trump-delivers-longest-state-of-the-union-address-in-history/" target="_blank" rel="noopener noreferrer">
+          <div class="story-meta"><span>Medill on the Hill</span><time datetime="2026-02-25">February 25, 2026</time></div>
+          <h3>In Photos: Trump delivers longest State of the Union address in history</h3>
+          <span class="story-open">View photo story ↗</span>
+        </a>
+        <a class="story-card" href="https://medillonthehill.medill.northwestern.edu/2026/02/in-photos-walk-for-peace-buddhist-monks-complete-unity-walk-on-embassy-row/" target="_blank" rel="noopener noreferrer">
+          <div class="story-meta"><span>Medill on the Hill</span><time datetime="2026-02-11">February 11, 2026</time></div>
+          <h3>In Photos: ‘Walk for Peace’ Buddhist monks complete Unity Walk on Embassy Row</h3>
+          <span class="story-open">View photo story ↗</span>
+        </a>
+        <a class="story-card" href="https://medillonthehill.medill.northwestern.edu/2026/02/in-photos-ice-out-for-good-protesters-gather-in-freezing-temperatures/" target="_blank" rel="noopener noreferrer">
+          <div class="story-meta"><span>Medill on the Hill</span><time datetime="2026-02-03">February 3, 2026</time></div>
+          <h3>In Photos: ‘ICE Out For Good’ protesters gather in freezing temperatures</h3>
+          <span class="story-open">View photo story ↗</span>
+        </a>
+        <a class="story-card" href="https://medillonthehill.medill.northwestern.edu/2026/01/in-photos-kid-rock-and-ticketing-representatives-appear-before-congress-targeting-ticket-resale-and-rise-of-bots/" target="_blank" rel="noopener noreferrer">
+          <div class="story-meta"><span>Medill on the Hill</span><time datetime="2026-01-29">January 29, 2026</time></div>
+          <h3>In Photos: Kid Rock and Ticketing representatives appear before Congress</h3>
+          <span class="story-open">View photo story ↗</span>
+        </a>
+        <a class="story-card" href="https://medillonthehill.medill.northwestern.edu/2026/01/in-photos-transgender-athletes-case-draws-hundreds-to-supreme-court-steps/" target="_blank" rel="noopener noreferrer">
+          <div class="story-meta"><span>Medill on the Hill</span><time datetime="2026-01-13">January 13, 2026</time></div>
+          <h3>In Photos: Transgender athletes cases draw hundreds to Supreme Court steps</h3>
+          <span class="story-open">View photo story ↗</span>
+        </a>
+        <a class="story-card" href="https://dailynorthwestern.com/2025/11/17/photo/captured-no-18-michigan-walks-off-northwestern-at-wrigley-field-24-22/" target="_blank" rel="noopener noreferrer">
+          <div class="story-meta"><span>The Daily Northwestern</span><time datetime="2025-11-17">November 17, 2025</time></div>
+          <h3>Captured: No. 18 Michigan walks off Northwestern at Wrigley Field, 24-22</h3>
+          <span class="story-open">View photo story ↗</span>
+        </a>
+        <a class="story-card" href="https://dailynorthwestern.com/2025/04/13/photo/captured-womens-tennis-loses-to-illinois-in-final-home-game/" target="_blank" rel="noopener noreferrer">
+          <div class="story-meta"><span>The Daily Northwestern</span><time datetime="2025-04-13">April 13, 2025</time></div>
+          <h3>Captured: Women’s Tennis loses to Illinois in final home game</h3>
+          <span class="story-open">View photo story ↗</span>
+        </a>
+      </div>
+    </section>
+
     <section id="about">
       <div class="about">
         <img src="images/003_CaylaLabgoldCarroll.JPG" alt="Portrait of Cayla Labgold-Carroll">
@@ -775,7 +906,7 @@
   </footer>
   <script>
     const validPages = new Set([
-      "home", "politics", "events", "sports", "community", "arts"
+      "home", "politics", "events", "sports", "community", "arts", "published"
     ]);
 
     function showPage(page, updateHistory = false) {
