@@ -708,6 +708,49 @@
         max-height: 480px;
       }
     }
+  
+    /* Dark palette: keep the image and story content as the focus. */
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      color: #f4f4f2;
+      background: #050507;
+    }
+
+    header,
+    footer {
+      background: #0d0d10;
+    }
+
+    header,
+    section {
+      border-color: #303036;
+    }
+
+    nav a,
+    .contact a {
+      color: #f4f4f2;
+    }
+
+    .hero-grid img,
+    .gallery img,
+    .about img,
+    #arts .gallery img {
+      background: #1c1c20;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        white-space: normal;
+      }
+
+      #published .published-intro {
+        white-space: normal;
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 
@@ -929,9 +972,9 @@
         Reach out at
         <a href="mailto:clabgoldcarroll@gmail.com">clabgoldcarroll@gmail.com</a>
         or connect with me on
-        <a href="https://www.instagram.com/caylalcmedia/" target="_blank">Instagram</a>
+        <a href="https://www.instagram.com/caylalcmedia/" target="_blank" rel="noopener noreferrer">Instagram</a>
         and
-        <a href="https://www.linkedin.com/in/cayla-labgold-carroll-84a931294/" target="_blank">LinkedIn</a>.
+        <a href="https://www.linkedin.com/in/cayla-labgold-carroll-84a931294/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
       </p>
     </section>
   </main>
