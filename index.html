@@ -711,6 +711,79 @@
     }
   
 
+
+    #creative .web-design-heading {
+      margin: 56px 0 18px;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+    }
+
+    #creative .web-design-projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    #creative .web-design-card {
+      display: flex;
+      min-height: 360px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(24px, 4vw, 48px);
+      color: #f4f4f2;
+      background:
+        linear-gradient(135deg, rgb(78 42 132 / 58%), transparent 62%),
+        #111116;
+      border: 1px solid #4E2A84;
+      text-decoration: none;
+      transition: background-color 180ms ease, transform 180ms ease;
+    }
+
+    #creative .web-design-card:hover,
+    #creative .web-design-card:focus-visible {
+      background-color: #21182d;
+      transform: translateY(-3px);
+    }
+
+    #creative .web-design-card:focus-visible {
+      outline: 3px solid #b69be6;
+      outline-offset: 4px;
+    }
+
+    #creative .web-design-role,
+    #creative .web-design-link {
+      font: 13px/1.4 Arial, sans-serif;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    #creative .web-design-role {
+      color: #d2c1eb;
+    }
+
+    #creative .web-design-card h4 {
+      margin: 44px 0;
+      font-size: clamp(36px, 5vw, 66px);
+      font-weight: 400;
+      line-height: .98;
+    }
+
+    #creative .web-design-link {
+      letter-spacing: .04em;
+      text-transform: none;
+    }
+
+    @media (max-width: 700px) {
+      #creative .web-design-projects {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      #creative .web-design-card {
+        min-height: 280px;
+      }
+    }
+
     #creative .print-layouts {
       width: min(calc(100vw - 8vw), 1500px);
       margin-left: 50%;
@@ -1031,6 +1104,20 @@
             <figure class="print-layout-card"><img src="images/print-layouts/gameday-page-3.jpeg" alt="Page 3 of the Gameday print layout." loading="lazy"><figcaption>Page 3</figcaption></figure>
           </div>
         </article>
+      </div>
+
+      <h3 class="web-design-heading">Web Design</h3>
+      <div class="web-design-projects">
+        <a class="web-design-card" href="https://apps.dailynorthwestern.com/gameday-new-ryan-field/" target="_blank" rel="noopener noreferrer">
+          <span class="web-design-role">Creative Director · The Daily Northwestern</span>
+          <h4>Gameday<br>New Ryan Field</h4>
+          <span class="web-design-link">Explore the website ↗</span>
+        </a>
+        <a class="web-design-card" href="https://apps.dailynorthwestern.com/2026-election/" target="_blank" rel="noopener noreferrer">
+          <span class="web-design-role">Creative Director · The Daily Northwestern</span>
+          <h4>2026<br>Election</h4>
+          <span class="web-design-link">Explore the website ↗</span>
+        </a>
       </div>
     </section>
 
