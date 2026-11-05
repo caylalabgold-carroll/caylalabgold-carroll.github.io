@@ -756,10 +756,13 @@
       font-size: 16px;
     }
 
-    #creative .print-layout-grid.three-pages > .print-layout-card:nth-child(3) {
-      grid-column: 1 / -1;
-      width: calc(50% - 12px);
-      justify-self: center;
+    #creative > h2 {
+      white-space: nowrap;
+      font-size: clamp(14px, 4.5vw, 48px);
+    }
+
+    #creative .print-layout-grid.three-pages {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     @media (max-width: 700px) {
@@ -772,9 +775,8 @@
         gap: 16px;
       }
 
-      #creative .print-layout-grid.three-pages > .print-layout-card:nth-child(3) {
-        grid-column: auto;
-        width: auto;
+      #creative .print-layout-grid.three-pages {
+        grid-template-columns: minmax(0, 1fr);
       }
 
       #creative .print-project {
@@ -816,7 +818,12 @@
 
     @media (max-width: 600px) {
       h1 {
-        white-space: normal;
+        font-size: clamp(10px, 3.4vw, 16px);
+        white-space: nowrap;
+      }
+
+      .tagline {
+        margin-left: 4px;
       }
 
       #published .published-intro {
@@ -972,13 +979,13 @@
         <article class="print-project">
           <h3>2026 Midterm Elections</h3>
           <div class="print-layout-grid">
-            <figure class="print-layout-card"><img src="images/print-layouts/midterm-elections-page-1.jpeg" alt="First page of the 2026 Midterm Elections print layout." loading="lazy"><figcaption>Page 1</figcaption></figure>
-            <figure class="print-layout-card"><img src="images/print-layouts/midterm-elections-page-2.jpeg" alt="Second page of the 2026 Midterm Elections print layout." loading="lazy"><figcaption>Page 2</figcaption></figure>
+            <figure class="print-layout-card"><img src="images/print-layouts/midterm-elections-page-2.jpeg" alt="First page of the 2026 Midterm Elections print layout." loading="lazy"><figcaption>Page 1</figcaption></figure>
+            <figure class="print-layout-card"><img src="images/print-layouts/midterm-elections-page-1.jpeg" alt="Second page of the 2026 Midterm Elections print layout." loading="lazy"><figcaption>Page 2</figcaption></figure>
           </div>
         </article>
 
         <article class="print-project">
-          <h3>Resilience</h3>
+          <h3>Resilience: Operation Midway Blitz, One Year Later</h3>
           <div class="print-layout-grid">
             <figure class="print-layout-card"><img src="images/print-layouts/resilience-page-1.jpeg" alt="First page of the Resilience print layout." loading="lazy"><figcaption>Page 1</figcaption></figure>
             <figure class="print-layout-card"><img src="images/print-layouts/resilience-page-2.jpeg" alt="Second page of the Resilience print layout." loading="lazy"><figcaption>Page 2</figcaption></figure>
@@ -994,11 +1001,19 @@
           </div>
         </article>
 
+
+        <article class="print-project">
+          <h3>Summer Style Guide</h3>
+          <div class="print-layout-grid">
+            <figure class="print-layout-card"><img src="images/print-layouts/summer-style-guide.jpeg" alt="Illustrated page from The Daily Summer Style Guide 2025." loading="lazy"><figcaption>Illustration and design for The Daily Summer Style Guide 2025</figcaption></figure>
+          </div>
+        </article>
+
         <article class="print-project">
           <h3>Other Print Layouts</h3>
           <div class="print-layout-grid">
             <figure class="print-layout-card"><img src="images/print-layouts/gameday-page-2.jpeg" alt="Page 2 of the Gameday print layout." loading="lazy"><figcaption>Gameday · Page 2</figcaption></figure>
-            <figure class="print-layout-card"><img src="images/print-layouts/orientation-issue-page-1.jpeg" alt="First page of the Orientation Issue print layout." loading="lazy"><figcaption>Orientation Issue · Page 1</figcaption></figure>
+            <figure class="print-layout-card"><img src="images/print-layouts/orientation-issue-page-1.jpeg" alt="First page of the Orientation Issue print layout." loading="lazy"><figcaption>Full-page illustration I drew for Northwestern’s freshman orientation issue, mailed to all incoming freshmen.</figcaption></figure>
           </div>
         </article>
       </div>
