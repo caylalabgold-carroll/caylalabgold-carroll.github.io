@@ -353,6 +353,7 @@
     body[data-page="sports"] #sports,
     body[data-page="community"] #community,
     body[data-page="arts"] #arts,
+    body[data-page="creative"] #creative,
     body[data-page="published"] #published {
       display: block;
     }
@@ -709,6 +710,78 @@
       }
     }
   
+
+    #creative .print-layouts {
+      width: min(calc(100vw - 8vw), 1500px);
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #creative .print-project {
+      margin-top: 54px;
+    }
+
+    #creative .print-project h3 {
+      margin: 0 0 18px;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+    }
+
+    #creative .print-layout-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    #creative .print-layout-card {
+      min-width: 0;
+      margin: 0;
+      padding: 14px;
+      background: #101014;
+      border: 1px solid #303036;
+    }
+
+    #creative .print-layout-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #1c1c20;
+    }
+
+    #creative .print-layout-card figcaption {
+      padding: 12px 2px 0;
+      color: #d8c9ec;
+      font-size: 16px;
+    }
+
+    #creative .print-layout-grid.three-pages > .print-layout-card:nth-child(3) {
+      grid-column: 1 / -1;
+      width: calc(50% - 12px);
+      justify-self: center;
+    }
+
+    @media (max-width: 700px) {
+      #creative .print-layouts {
+        width: calc(100vw - 32px);
+      }
+
+      #creative .print-layout-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      #creative .print-layout-grid.three-pages > .print-layout-card:nth-child(3) {
+        grid-column: auto;
+        width: auto;
+      }
+
+      #creative .print-project {
+        margin-top: 40px;
+      }
+    }
+
     /* Dark palette: keep the image and story content as the focus. */
     :root {
       color-scheme: dark;
@@ -763,6 +836,7 @@
       <a href="#sports">Sports</a>
       <a href="#community">Community</a>
       <a href="#arts">Arts &amp; Performance</a>
+      <a href="#creative">Creative Design &amp; Illustration</a>
       <a href="#published">Published Photo Stories</a>
       <a class="about-link" href="#about">About &amp; Contact</a>
     </nav>
@@ -891,6 +965,45 @@
     </section>
 
 
+    <section id="creative">
+      <h2>Creative Design &amp; Illustration</h2>
+      <p class="section-intro">Illustration, visual design, and creative work.</p>
+            <div class="print-layouts">
+        <article class="print-project">
+          <h3>2026 Midterm Elections</h3>
+          <div class="print-layout-grid">
+            <figure class="print-layout-card"><img src="images/print-layouts/midterm-elections-page-1.jpeg" alt="First page of the 2026 Midterm Elections print layout." loading="lazy"><figcaption>Page 1</figcaption></figure>
+            <figure class="print-layout-card"><img src="images/print-layouts/midterm-elections-page-2.jpeg" alt="Second page of the 2026 Midterm Elections print layout." loading="lazy"><figcaption>Page 2</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="print-project">
+          <h3>Resilience</h3>
+          <div class="print-layout-grid">
+            <figure class="print-layout-card"><img src="images/print-layouts/resilience-page-1.jpeg" alt="First page of the Resilience print layout." loading="lazy"><figcaption>Page 1</figcaption></figure>
+            <figure class="print-layout-card"><img src="images/print-layouts/resilience-page-2.jpeg" alt="Second page of the Resilience print layout." loading="lazy"><figcaption>Page 2</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="print-project">
+          <h3>Basketball Preview</h3>
+          <div class="print-layout-grid three-pages">
+            <figure class="print-layout-card"><img src="images/print-layouts/basketball-preview-page-1.jpeg" alt="First page of the Basketball Preview print layout." loading="lazy"><figcaption>Page 1</figcaption></figure>
+            <figure class="print-layout-card"><img src="images/print-layouts/basketball-preview-page-2.jpeg" alt="Second page of the Basketball Preview print layout." loading="lazy"><figcaption>Page 2</figcaption></figure>
+            <figure class="print-layout-card"><img src="images/print-layouts/basketball-preview-page-3.jpeg" alt="Third page of the Basketball Preview print layout." loading="lazy"><figcaption>Page 3</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="print-project">
+          <h3>Other Print Layouts</h3>
+          <div class="print-layout-grid">
+            <figure class="print-layout-card"><img src="images/print-layouts/gameday-page-2.jpeg" alt="Page 2 of the Gameday print layout." loading="lazy"><figcaption>Gameday · Page 2</figcaption></figure>
+            <figure class="print-layout-card"><img src="images/print-layouts/orientation-issue-page-1.jpeg" alt="First page of the Orientation Issue print layout." loading="lazy"><figcaption>Orientation Issue · Page 1</figcaption></figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="published">
       <h2>Published Photo Stories</h2>
       <p class="section-intro published-intro">Published photo essays and visual stories by Cayla Labgold-Carroll</p>
@@ -987,7 +1100,7 @@
   </footer>
   <script>
     const validPages = new Set([
-      "home", "politics", "events", "sports", "community", "arts", "published"
+      "home", "politics", "events", "sports", "community", "arts", "creative", "published"
     ]);
 
     function showPage(page, updateHistory = false) {
