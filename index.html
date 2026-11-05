@@ -784,6 +784,19 @@
       }
     }
 
+
+    #creative .print-layout-grid.single-page > .print-layout-card {
+      grid-column: 1 / -1;
+      width: calc(50% - 12px);
+      justify-self: center;
+    }
+
+    @media (max-width: 700px) {
+      #creative .print-layout-grid.single-page > .print-layout-card {
+        grid-column: auto;
+        width: auto;
+      }
+    }
     /* Dark palette: keep the image and story content as the focus. */
     :root {
       color-scheme: dark;
@@ -1003,17 +1016,19 @@
 
 
         <article class="print-project">
-          <h3>Summer Style Guide</h3>
+          <h3>Full-Page Illustrations</h3>
           <div class="print-layout-grid">
             <figure class="print-layout-card"><img src="images/print-layouts/summer-style-guide.jpeg" alt="Illustrated page from The Daily Summer Style Guide 2025." loading="lazy"><figcaption>Illustration and design for The Daily Summer Style Guide 2025</figcaption></figure>
+            <figure class="print-layout-card"><img src="images/print-layouts/orientation-issue-page-1.jpeg" alt="Full-page illustration created for Northwestern’s freshman orientation issue." loading="lazy"><figcaption>Full-page illustration I drew for Northwestern’s freshman orientation issue, mailed to all incoming freshmen.</figcaption></figure>
           </div>
         </article>
 
         <article class="print-project">
-          <h3>Other Print Layouts</h3>
-          <div class="print-layout-grid">
-            <figure class="print-layout-card"><img src="images/print-layouts/gameday-page-2.jpeg" alt="Page 2 of the Gameday print layout." loading="lazy"><figcaption>Gameday · Page 2</figcaption></figure>
-            <figure class="print-layout-card"><img src="images/print-layouts/orientation-issue-page-1.jpeg" alt="First page of the Orientation Issue print layout." loading="lazy"><figcaption>Full-page illustration I drew for Northwestern’s freshman orientation issue, mailed to all incoming freshmen.</figcaption></figure>
+          <h3>Gameday</h3>
+          <div class="print-layout-grid three-pages">
+            <figure class="print-layout-card"><img src="images/print-layouts/gameday-page-1.jpeg" alt="Page 1 of the Gameday print layout." loading="lazy"><figcaption>Page 1</figcaption></figure>
+            <figure class="print-layout-card"><img src="images/print-layouts/gameday-page-2.jpeg" alt="Page 2 of the Gameday print layout." loading="lazy"><figcaption>Page 2</figcaption></figure>
+            <figure class="print-layout-card"><img src="images/print-layouts/gameday-page-3.jpeg" alt="Page 3 of the Gameday print layout." loading="lazy"><figcaption>Page 3</figcaption></figure>
           </div>
         </article>
       </div>
