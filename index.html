@@ -353,6 +353,7 @@
     body[data-page="sports"] #sports,
     body[data-page="community"] #community,
     body[data-page="arts"] #arts,
+    body[data-page="creative"] #creative,
     body[data-page="published"] #published {
       display: block;
     }
@@ -709,6 +710,21 @@
       }
     }
   
+
+    #creative .creative-note {
+      display: grid;
+      min-height: 240px;
+      place-items: center;
+      margin: 0;
+      padding: 32px;
+      border: 1px solid #4E2A84;
+      color: #d8c9ec;
+      background: linear-gradient(135deg, #17131d, #0d0d10);
+      font-size: clamp(22px, 3vw, 34px);
+      font-style: italic;
+      text-align: center;
+    }
+
     /* Dark palette: keep the image and story content as the focus. */
     :root {
       color-scheme: dark;
@@ -763,6 +779,7 @@
       <a href="#sports">Sports</a>
       <a href="#community">Community</a>
       <a href="#arts">Arts &amp; Performance</a>
+      <a href="#creative">Creative Design &amp; Illustration</a>
       <a href="#published">Published Photo Stories</a>
       <a class="about-link" href="#about">About &amp; Contact</a>
     </nav>
@@ -891,6 +908,12 @@
     </section>
 
 
+    <section id="creative">
+      <h2>Creative Design &amp; Illustration</h2>
+      <p class="section-intro">Illustration, visual design, and creative work.</p>
+      <p class="creative-note">Selected work coming soon.</p>
+    </section>
+
     <section id="published">
       <h2>Published Photo Stories</h2>
       <p class="section-intro published-intro">Published photo essays and visual stories by Cayla Labgold-Carroll</p>
@@ -987,7 +1010,7 @@
   </footer>
   <script>
     const validPages = new Set([
-      "home", "politics", "events", "sports", "community", "arts", "published"
+      "home", "politics", "events", "sports", "community", "arts", "creative", "published"
     ]);
 
     function showPage(page, updateHistory = false) {
