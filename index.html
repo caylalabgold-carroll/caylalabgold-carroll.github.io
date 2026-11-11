@@ -1689,7 +1689,7 @@
       const caption = photo.dataset.caption?.trim() || photo.alt.trim() || "Photo";
       lightboxImage.src = photo.currentSrc || photo.src;
       lightboxImage.alt = caption;
-      lightboxCaption.textContent = `${activeIndex + 1} of ${activePhotos.length} — ${caption}`;
+      lightboxCaption.textContent = caption;
       previousButton.disabled = activeIndex === 0;
       nextButton.disabled = activeIndex === activePhotos.length - 1;
     }
