@@ -1144,24 +1144,119 @@
         padding-right: 140px;
       }
     }
-</style>
+
+    /* Keep primary destinations visible while grouping single-photo galleries. */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 18px 24px;
+      position: relative;
+      padding-right: 170px;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+
+    nav > a:not(.about-link),
+    .menu-toggle {
+      color: #f4f4f2;
+      font: 15px/1.4 Georgia, "Times New Roman", serif;
+      text-decoration: none;
+    }
+
+    nav > a:not(.about-link):hover {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .singles-menu {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .menu-toggle {
+      min-height: auto;
+      gap: 7px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      color: #f4f4f2;
+      background: transparent;
+    }
+
+    .menu-toggle:hover,
+    .menu-toggle[aria-expanded="true"] {
+      color: #d8c9ec;
+      background: transparent;
+    }
+
+    .menu-toggle[aria-current="page"] {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .menu-toggle:focus-visible {
+      outline: 2px solid #b69be6;
+      outline-offset: 5px;
+    }
+
+    .section-menu {
+      top: calc(100% + 12px);
+    }
+
+    nav > a[aria-current="page"] {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        justify-content: flex-start;
+        gap: 14px 18px;
+        padding-right: 140px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav {
+        gap: 12px 16px;
+        padding: 46px 0 0;
+      }
+
+      nav a.about-link {
+        top: 0;
+        right: auto;
+        left: 0;
+      }
+
+      .section-menu {
+        min-width: 230px;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
   <header>
     <nav aria-label="Portfolio sections">
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="section-menu">
-        Sections <span aria-hidden="true">⌄</span>
-      </button>
-      <div class="section-menu" id="section-menu" hidden>
-        <a href="#home" aria-current="page">Home</a>
-        <a href="#politics">Politics</a>
-        <a href="#events">Protests &amp; Marches</a>
-        <a href="#sports">Sports</a>
-        <a href="#community">Community &amp; Culture</a>
-        <a href="#published">Published Photo Stories</a>
-        <a href="#creative">Creative Design &amp; Illustration</a>
+      <a href="#home" aria-current="page">Home</a>
+      <div class="singles-menu">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="section-menu">
+          Singles <span aria-hidden="true">⌄</span>
+        </button>
+        <div class="section-menu" id="section-menu" hidden>
+          <a href="#politics" data-page-target="politics">Politics</a>
+          <a href="#events" data-page-target="events">Protests &amp; Marches</a>
+          <a href="#sports" data-page-target="sports">Sports</a>
+          <a href="#community" data-page-target="community">Community &amp; Culture</a>
+          <a href="#arts" data-page-target="community" data-scroll-target="#arts">Arts &amp; Performance</a>
+        </div>
       </div>
+      <a href="#published">Published Photo Stories</a>
+      <a href="#creative">Creative Design &amp; Illustration</a>
       <a class="about-link" href="#about">About &amp; Contact</a>
     </nav>
 
@@ -1455,10 +1550,17 @@
       const selectedPage = validPages.has(page) ? page : "home";
       document.body.dataset.page = selectedPage;
       document.querySelectorAll("nav a").forEach((link) => {
-        const isCurrent = link.getAttribute("href") === `#${selectedPage}`;
+        const targetPage = link.dataset.pageTarget || link.getAttribute("href")?.slice(1);
+        const isCurrent = targetPage === selectedPage;
         if (isCurrent) link.setAttribute("aria-current", "page");
         else link.removeAttribute("aria-current");
       });
+      const singlesToggle = document.querySelector(".menu-toggle");
+      if (["politics", "events", "sports", "community"].includes(selectedPage)) {
+        singlesToggle.setAttribute("aria-current", "page");
+      } else {
+        singlesToggle.removeAttribute("aria-current");
+      }
       if (updateHistory) history.pushState(null, "", `#${selectedPage}`);
       window.scrollTo(0, 0);
     }
@@ -1499,7 +1601,12 @@
           requestAnimationFrame(() => document.querySelector("#about").scrollIntoView({ behavior: "smooth" }));
           return;
         }
-        showPage(link.hash.slice(1), true);
+        const pageTarget = link.dataset.pageTarget || link.hash.slice(1);
+        showPage(pageTarget, true);
+        const scrollTarget = link.dataset.scrollTarget;
+        if (scrollTarget) {
+          requestAnimationFrame(() => document.querySelector(scrollTarget)?.scrollIntoView({ behavior: "smooth" }));
+        }
       });
     });
 
