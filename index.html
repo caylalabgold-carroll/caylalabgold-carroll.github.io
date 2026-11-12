@@ -1369,6 +1369,52 @@
       }
     }
 
+  
+    .illustration-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .illustration-heading h2 {
+      margin-bottom: 14px;
+    }
+
+    .illustration-jump {
+      flex: 0 0 auto;
+      color: #d2c1eb;
+      font: 14px/1.4 Arial, sans-serif;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .illustration-jump:hover,
+    .illustration-jump:focus-visible {
+      color: #fff;
+    }
+
+    #print-illustrations {
+      scroll-margin-top: 28px;
+      margin: 52px 0 14px;
+      font-size: clamp(26px, 3.5vw, 40px);
+    }
+
+    #illustration .print-illustrations > .section-intro {
+      margin-bottom: 22px;
+    }
+
+    @media (max-width: 520px) {
+      .illustration-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .illustration-jump {
+        margin-bottom: 18px;
+      }
+    }
   </style>
 </head>
 
@@ -1652,7 +1698,10 @@
    </section>
 
     <section id="illustration">
-      <h2>Illustration</h2>
+      <div class="illustration-heading">
+        <h2>Illustration</h2>
+        <a class="illustration-jump" href="#print-illustrations">Jump to print illustrations ↓</a>
+      </div>
       <p class="section-intro">Editorial illustrations published by The Daily Northwestern.</p>
       <div class="gallery">
         <img src="images/illustration/nyt-illustration.jpg" alt="NU expands access to The New York Times for students, faculty and staff">
@@ -1666,8 +1715,17 @@
         <img src="images/illustration/sanctuary-cities-order.jpg" alt="Executive order against ‘sanctuary’ cities is likely unconstitutional, experts say">
         <img src="images/illustration/evanston-grocery-tax.jpg" alt="Council passes 1% municipal grocery tax after delaying vote">
         <img src="images/illustration/2025-evanston-elections.jpg" alt="City Council likely to see three new members in light of April 1 elections">
-        <img src="images/print-layouts/summer-style-guide.jpeg" alt="The Daily Summer Style Guide 2025: A moodboard of this year’s fashion inspiration">
-        <img src="images/print-layouts/orientation-issue-page-1.jpeg" alt="Full-page illustration I drew for Northwestern’s freshman orientation issue, mailed to all incoming freshmen.">
+      </div>
+
+      <div class="print-illustrations">
+        <h3 id="print-illustrations">Print Illustrations</h3>
+        <p class="section-intro">Full-page illustrations created for print publications.</p>
+        <div class="gallery print-illustration-gallery">
+          <img src="images/print-layouts/summer-style-guide.jpeg" alt="The Daily Summer Style Guide 2025: a moodboard of this year’s fashion inspiration">
+          <img src="images/print-layouts/orientation-issue-page-1.jpeg" alt="Full-page illustration for Northwestern’s freshman orientation issue, mailed to incoming freshmen">
+          <img src="images/print-layouts/headstart-print-illo.svg" alt="Print illustration for a Headstart feature">
+          <img src="images/print-layouts/kresge-graffiti-print-illo.svg" alt="Print illustration featuring Kresge graffiti">
+        </div>
       </div>
     </section>
 
