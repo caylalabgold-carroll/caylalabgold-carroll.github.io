@@ -354,7 +354,8 @@
     body[data-page="community"] #community,
     body[data-page="creative"] #creative,
     body[data-page="illustration"] #illustration,
-    body[data-page="published"] #published {
+    body[data-page="published"] #published,
+    body[data-page="writing"] #writing {
       display: block;
     }
 
@@ -1280,6 +1281,85 @@
         grid-template-columns: minmax(0, 1fr);
       }
     }
+
+    #writing .writing-publications {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    #writing .writing-publication {
+      min-width: 0;
+      padding: clamp(20px, 2.5vw, 32px);
+      color: #f4f4f2;
+      background: #111116;
+      border: 1px solid #4E2A84;
+    }
+
+    #writing .writing-publication-header {
+      margin: 0 0 22px;
+      padding: 0 0 18px;
+      border-bottom: 1px solid #4E2A84;
+    }
+
+    #writing .writing-publication-header a {
+      color: #d2c1eb;
+      font-size: clamp(22px, 2.2vw, 30px);
+      line-height: 1.1;
+      text-decoration: none;
+    }
+
+    #writing .writing-publication-header a:hover,
+    #writing .writing-publication-header a:focus-visible,
+    #writing .writing-highlights a:hover,
+    #writing .writing-highlights a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    #writing .writing-publication-header p {
+      margin: 10px 0 0;
+      color: #c7c2cc;
+      font: 13px/1.45 Arial, sans-serif;
+      letter-spacing: .04em;
+    }
+
+    #writing .writing-highlights {
+      display: grid;
+      gap: 16px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #writing .writing-highlights a {
+      color: #f4f4f2;
+      font-size: 17px;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      #writing .writing-publications {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #writing .writing-publication:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 620px) {
+      #writing .writing-publications {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      #writing .writing-publication:last-child {
+        grid-column: auto;
+      }
+    }
+
   </style>
 </head>
 
@@ -1300,6 +1380,7 @@
         </div>
       </div>
       <a href="#published">Published Photo Stories</a>
+      <a href="#writing">Writing</a>
       <a href="#creative">Creative Design</a>
       <a href="#illustration">Illustration</a>
       <a class="about-link" href="#about">About &amp; Contact</a>
@@ -1427,6 +1508,52 @@
       </div>
     </section>
 
+
+
+    <section id="writing">
+      <h2>Writing</h2>
+      <p class="section-intro">Reported stories and features, organized by publication.</p>
+
+      <div class="writing-publications">
+        <article class="writing-publication">
+          <div class="writing-publication-header">
+            <a href="https://medillonthehill.medill.northwestern.edu/author/ccarroll/" target="_blank" rel="noopener noreferrer">Medill on the Hill</a>
+            <p>Congressional Reporter · Medill News Service</p>
+          </div>
+          <ul class="writing-highlights">
+            <li><a href="https://medillonthehill.medill.northwestern.edu/2026/03/republicans-want-to-see-irans-nuclear-program-destroyed-democrats-are-asking-if-an-end-to-the-war-is-in-sight/" target="_blank" rel="noopener noreferrer">Republicans want to see Iran’s nuclear program destroyed. Democrats are asking if an end to the war is in sight.</a></li>
+            <li><a href="https://medillonthehill.medill.northwestern.edu/2026/01/supreme-court-hears-arguments-deciding-whether-to-uphold-hawaiis-vampire-rule-gun-law/" target="_blank" rel="noopener noreferrer">Supreme Court hears arguments, deciding whether to uphold Hawaii’s “Vampire Rule” gun law</a></li>
+            <li><a href="https://medillonthehill.medill.northwestern.edu/2026/01/lawmakers-react-to-reinstated-ice-facility-visitation-restrictions/" target="_blank" rel="noopener noreferrer">Lawmakers react to reinstated ICE facility visitation restrictions</a></li>
+            <li><a href="https://medillonthehill.medill.northwestern.edu/2026/02/florida-democrat-pleads-not-guilty-to-fraud-charges-congressional-hearing-date-set/" target="_blank" rel="noopener noreferrer">Florida Democrat pleads not guilty to fraud charges, congressional hearing date set</a></li>
+          </ul>
+        </article>
+
+        <article class="writing-publication">
+          <div class="writing-publication-header">
+            <a href="https://jweekly.com/author/cayla-labgold-carroll/" target="_blank" rel="noopener noreferrer">J. The Jewish News of Northern California</a>
+            <p>Editorial and Photography Intern</p>
+          </div>
+          <ul class="writing-highlights">
+            <li><a href="https://jweekly.com/2026/08/27/how-a-big-east-bay-synagogue-is-getting-even-bigger/" target="_blank" rel="noopener noreferrer">How a big East Bay synagogue is getting even bigger</a></li>
+            <li><a href="https://jweekly.com/2026/08/20/el-als-first-sfo-tlv-flight-selling-out-fast-as-israelis-scramble-to-vote/" target="_blank" rel="noopener noreferrer">El Al’s first SFO–TLV flight selling out fast as Israelis scramble to vote</a></li>
+            <li><a href="https://jweekly.com/2026/08/19/palo-alto-high-parents-sue-district-over-mosque-field-trip/" target="_blank" rel="noopener noreferrer">Palo Alto High parents sue district over mosque field trip</a></li>
+          </ul>
+        </article>
+
+        <article class="writing-publication">
+          <div class="writing-publication-header">
+            <a href="https://dailynorthwestern.com/staff_name/cayla-labgold-carroll/" target="_blank" rel="noopener noreferrer">The Daily Northwestern</a>
+            <p>Reporter · previously Photo Editor and Illustrations Editor</p>
+          </div>
+          <ul class="writing-highlights">
+            <li><a href="https://dailynorthwestern.com/2025/12/12/campus/its-incomprehensible-northwestern-faculty-raise-concerns-over-new-federal-deal/" target="_blank" rel="noopener noreferrer">“It’s incomprehensible”: Northwestern faculty raise concerns over new federal deal</a></li>
+            <li><a href="https://dailynorthwestern.com/2025/12/03/campus/stuck-in-limbo-nu-researchers-with-terminated-nsf-grants-unable-to-continue-work/" target="_blank" rel="noopener noreferrer">“Stuck in limbo”: NU researchers with terminated NSF grants unable to continue work</a></li>
+            <li><a href="https://dailynorthwestern.com/2025/10/21/lateststories/after-monday-ruling-northwestern-bias-training-lawsuit-plaintiffs-left-feeling-disappointed-but-not-disheartened/" target="_blank" rel="noopener noreferrer">After Monday ruling, Northwestern bias training lawsuit plaintiffs left feeling disappointed, but not disheartened</a></li>
+            <li><a href="https://dailynorthwestern.com/2025/09/15/campus/jewish-students-at-northwestern-divided-over-federal-funding-freeze-to-combat-antisemitism/" target="_blank" rel="noopener noreferrer">Jewish students at Northwestern divided over federal funding freeze to combat antisemitism</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
     <section id="creative">
       <h2>Creative Design</h2>
@@ -1615,7 +1742,7 @@
   </footer>
   <script>
     const validPages = new Set([
-      "home", "politics", "events", "sports", "community", "creative", "illustration", "published"
+      "home", "politics", "events", "sports", "community", "creative", "illustration", "published", "writing"
     ]);
 
     function showPage(page, updateHistory = false) {
