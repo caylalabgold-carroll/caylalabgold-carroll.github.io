@@ -353,6 +353,7 @@
     body[data-page="sports"] #sports,
     body[data-page="community"] #community,
     body[data-page="creative"] #creative,
+    body[data-page="illustration"] #illustration,
     body[data-page="published"] #published {
       display: block;
     }
@@ -1241,6 +1242,44 @@
       }
     }
 
+
+
+    /* Keep the three web design previews together at the top of Creative Design. */
+    #creative .web-design-projects {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    #illustration .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+      align-items: start;
+    }
+
+    #illustration .gallery > .photo-frame {
+      display: block;
+      width: auto;
+      margin: 0;
+    }
+
+    #illustration .gallery img {
+      width: 100%;
+      height: auto !important;
+      object-fit: contain;
+    }
+
+    @media (max-width: 900px) {
+      #creative .web-design-projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      #creative .web-design-projects,
+      #illustration .gallery {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
   </style>
 </head>
 
@@ -1261,7 +1300,8 @@
         </div>
       </div>
       <a href="#published">Published Photo Stories</a>
-      <a href="#creative">Creative Design &amp; Illustration</a>
+      <a href="#creative">Creative Design</a>
+      <a href="#illustration">Illustration</a>
       <a class="about-link" href="#about">About &amp; Contact</a>
     </nav>
 
@@ -1389,8 +1429,8 @@
 
 
     <section id="creative">
-      <h2>Creative Design &amp; Illustration</h2>
-      <p class="section-intro">Illustration, visual design, and creative work.</p>
+      <h2>Creative Design</h2>
+      <p class="section-intro">Web and print design projects.</p>
 
       <h3 class="web-design-heading">Web Design</h3>
       <div class="web-design-projects">
@@ -1466,6 +1506,24 @@
       </div>
 
    </section>
+
+    <section id="illustration">
+      <h2>Illustration</h2>
+      <p class="section-intro">Editorial illustrations published by The Daily Northwestern. Click any image to view it with its story headline.</p>
+      <div class="gallery">
+        <img src="images/illustration/nyt-illustration.jpg" alt="Illustration featuring The New York Times masthead.">
+        <img src="images/illustration/nu-rankings-by-category.jpg" alt="By the Numbers: Northwestern’s U.S. News &amp; World Report ranking, by category">
+        <img src="images/illustration/federal-funding-freezes.jpg" alt="Funding freezes at Northwestern, elite universities divide federal lawmakers">
+        <img src="images/illustration/federal-antisemitism-investigations.jpg" alt="The Daily Explains: Where Northwestern stands in federal antisemitism investigations">
+        <img src="images/illustration/egg-prices.jpg" alt="An economy in scrambles: Some brunch spots charging egg-stra fees">
+        <img src="images/illustration/san-francisco-campus.jpg" alt="Northwestern to shutter San Francisco campus, academic programs amid financial uncertainty">
+        <img src="images/illustration/arts-funding-cuts.jpg" alt="Evanston arts organizations pivot following NEA funding cuts, anti-DEI policies">
+        <img src="images/illustration/spring-campus-poll.jpg" alt="Highlights from The Daily’s Spring 2025 Campus Poll: AI, campus antisemitism, long-distance relationships">
+        <img src="images/illustration/sanctuary-cities-order.jpg" alt="Executive order against ‘sanctuary’ cities is likely unconstitutional, experts say">
+        <img src="images/illustration/evanston-grocery-tax.jpg" alt="Council passes 1% municipal grocery tax after delaying vote">
+        <img src="images/illustration/2025-evanston-elections.jpg" alt="City Council likely to see three new members in light of April 1 elections">
+      </div>
+    </section>
 
     <section id="published">
       <h2>Published Photo Stories</h2>
@@ -1563,7 +1621,7 @@
   </footer>
   <script>
     const validPages = new Set([
-      "home", "politics", "events", "sports", "community", "creative", "published"
+      "home", "politics", "events", "sports", "community", "creative", "illustration", "published"
     ]);
 
     function showPage(page, updateHistory = false) {
